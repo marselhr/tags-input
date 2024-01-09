@@ -1,15 +1,19 @@
-<script>
-import TagInput from './components/TagInput.vue';
-export default {
-  components: {
-    TagInput,
-  },
-};
-</script>
+<script></script>
 
 <template>
   <h1>Hello World!</h1>
-  <TagInput />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
+  <tag-input />
 </template>
 
 <style scoped>
