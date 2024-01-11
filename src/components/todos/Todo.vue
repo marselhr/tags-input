@@ -1,17 +1,20 @@
 <template>
   <div
     class="w-4/6 shadow-retro rounded-md border p-1 mb-2 min-h-12 border-slate-700 flex flex-wrap items-center justify-between group"
-    v-for="todo in todos"
-    :key="todo.index"
+    :class="completedClass"
   >
     <div class="flex items-center">
-      <div
-        class="h-4 w-4 border-1 rounded-md border border-green-800 me-2"
-      ></div>
-      <p class="text-slate-700 break-words max-w-80">{{ todo.title }}</p>
+      <input
+        type="checkbox"
+        class="h-4 w-4 border border-green-700 rounded me-2"
+        :checked="todo.completed"
+      />
+      <p class="text-slate-700 break-words max-w-4/6">
+        {{ todo.title }}
+      </p>
     </div>
     <div class="flex gap-2 transition-all ease-in-out">
-      <p class="transition delay-500 text-slate-700">{{ todo.updated_at }}</p>
+      <p class="transition delay-500 text-slate-900">{{ todo.updated_at }}</p>
       <div
         class="gap-2 hidden group-hover:flex transition-all duration-150 ease-in-out float-end"
       >
@@ -31,12 +34,15 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
-import { allTodos } from '../http/todo-api';
-const todos = ref([]);
-onMounted(async () => {
-  const { data } = await allTodos();
+import { computed } from 'vue';
 
-  todos.value = data.todos;
+const props = defineProps({
+  todo: Object,
 });
+
+const completedClass = computed(() =>
+  props.todo.completed
+    ? 'line-through text-slate-400 bg-gray-200'
+    : 'bg-purple-300 text-slate-600'
+);
 </script>
