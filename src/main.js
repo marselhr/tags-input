@@ -15,6 +15,6 @@ const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('navbar', Navbar)
-app.component('task-page', TodoPage)
+app.component('todo-page', TodoPage)
 app.component('footer-item', Footer)
 app.mount('#app')
