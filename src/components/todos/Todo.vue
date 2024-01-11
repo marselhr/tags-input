@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-4/6 shadow-retro rounded-md border p-1 mb-2 min-h-12 border-slate-700 flex flex-wrap items-center justify-between group"
+    class="w-4/6 shadow-retro rounded-md border p-1 mb-2 min-h-12 border-slate-700 flex flex-wrap items-center justify-between group transition-all duration-300 ease-in-out"
     :class="completedClass"
   >
     <div class="flex items-center">
@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="flex gap-2 transition-all ease-in-out">
-      <p class="transition delay-500 text-slate-900">{{ todo.updated_at }}</p>
+      <!-- <p class="transition delay-500 text-slate-900">{{ todo.updated_at }}</p> -->
       <div
         class="gap-2 hidden group-hover:flex transition-all duration-150 ease-in-out float-end"
       >
@@ -43,6 +43,6 @@ const props = defineProps({
 const completedClass = computed(() =>
   props.todo.completed
     ? 'line-through text-slate-400 bg-gray-200'
-    : 'bg-purple-300 text-slate-600'
+    : 'bg-purple-300 text-slate-600 hover:bg-gray-200'
 );
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <TodoInputVue />
+  <NewTodo @added="handleAddedTodo" />
   <Todos :todos="uncompletedTodo" />
 
   <button
@@ -14,10 +14,10 @@
 </template>
 
 <script setup>
-import TodoInputVue from '../components/TodoInput.vue';
 import Todos from '../components/todos/Todos.vue';
 import { computed, onMounted, ref } from 'vue';
-import { allTodos } from '../http/todo-api';
+import { allTodos, createTodo } from '../http/todo-api';
+import NewTodo from '../components/todos/NewTodo.vue';
 const todos = ref([]);
 onMounted(async () => {
   const { data } = await allTodos();
@@ -41,4 +41,13 @@ const completedTodoIsVisible = computed(
 );
 
 const showCompletedTodo = ref(false);
+
+const handleAddedTodo = async (newTodo) => {
+  console.log(JSON.stringify(newTodo));
+  const {
+    data: { todo },
+  } = await createTodo(newTodo);
+
+  todos.value.unshift(todo);
+};
 </script>
