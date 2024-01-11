@@ -1,23 +1,11 @@
 <script></script>
 
 <template>
-  <h1>Hello World!</h1>
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
-  <tag-input />
+  <navbar />
+  <main class="min-h-[80vh] w-full flex flex-col items-center">
+    <task-input class="mb-3" />
+    <task-item class="mb-2" />
+  </main>
 </template>
 
-<style scoped>
-h1 {
-  color: aqua;
-}
-</style>
+<style scoped></style>
